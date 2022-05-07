@@ -93,6 +93,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 0 20px;
+    background-color: rgba(255, 255, 255, 0.884);
 }
 
 .content_text {
@@ -106,13 +107,17 @@
 .content_product {
     width: 260px;
     /* height: 335px; */
-    border-bottom: 10px solid blue;
+    border-bottom: 10px solid rgb(138, 138, 182);
+    margin-top: 20px;
 }
 
 .content_product:hover {
     box-shadow: 0 0 5px #999;
-    position: relative;
-    top: -5px;
+    /* position: relative;
+    top: -5px; */
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 .content_product-img,
