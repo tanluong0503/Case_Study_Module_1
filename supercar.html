@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperCar Management</title>
+    <link rel="stylesheet" href="../case/suppercar.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="nav_left">
+            <div class="home menu">
+                <h3>TRANG CHỦ</h3>
+            </div>
+            <div class="nav_introduce menu">
+                <h3>GIỚI THIỆU</h3>
+            </div>
+        </div>
+        <div class="nav_center">
+            <a href="">
+                <img src="../images/logo-2691.png" alt="">
+            </a>
+        </div>
+        <div class="nav_right">
+            <div class="product menu">
+                <h3>SẢN PHẨM</h3>
+            </div>
+            <div class="video menu">
+                <h3>VIDEO</h3>
+            </div>
+            <div class="contact menu">
+                <h3>LIÊN HỆ</h3>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header_text">
+            <div class="header1">
+                <p>Trang Chủ</p>
+            </div>
+            <div class="dash">
+                <p>/</p>
+            </div>
+            <div class="header2">
+                <p>Sản Phẩm</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-add add-none">
+        <div>
+            <label for="addName">Nhập tên sản phẩm muốn thêm:</label>
+            <input type="text" id="addName">
+            <label for="addPrice">Nhập giá sản phẩm muốn thêm:</label>
+            <input type="number" id="addPrice">
+            <label for="addImage">Nhập hình ảnh sản phẩm muốn thêm:</label>
+            <input type="url" id="addImage">
+        </div>
+        <div>
+            <button type="button" onclick="btnUpdateAdd()">Update</button>
+            <button type="button" onclick="clearFormAdd()">Cancel</button>
+        </div>
+    </div>
+    <div class="form-edit edit-none">
+        <div>
+            <label for="">Nhập tên sản phẩm muốn sửa</label>
+            <input type="text" id="editName">
+            <label for="editPrice">Nhập giá sản phẩm muốn sửa</label>
+            <input type="number" id="editPrice">
+            <label for="editImage">Nhập hình ảnh sản phẩm muốn sửa</label>
+            <input type="url" id="editImage">
+        </div>
+        <div>
+            <button type="button" onclick="btnUpdateEdit()">Update</button>
+            <button type="button" onclick="clearFormEdit()">Cancel</button>
+        </div>
+    </div>
+    <div class="header_content">
+        <div class="content_text">
+            <h2>SẢN PHẨM</h2>
+        </div>
+    </div>
+    <div class="content">
+    </div>
+    <script src="supercar.js">
+    </script>
+</body>
+
+</html>
