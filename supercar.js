@@ -27,6 +27,7 @@ function init() {
             new Product(5, "Ferrari", 3148000, 'images/ferrari.jpg'),
             new Product(6, "Mc Laren", 1924000, 'images/mclaren.jpg'),
             new Product(7, "Porsche", 2478000, 'images/porsche.jpg'),
+            new Product(8, "BMW", 3439000, 'images/bmw.jpg'),
         ]
         setData(keyName, products);
     }
