@@ -57,6 +57,17 @@ function renderProducts(data) {
         `
     })
     document.querySelector(".content").innerHTML = htmls.join("");
+    var number = document.getElementById('editPrice');
+
+    // Listen for input event on numInput.
+    // number.onkeydown = function (e) {
+    //     if (!((e.keyCode > 95 && e.keyCode < 106)
+    //         || (e.keyCode > 47 && e.keyCode < 58)
+    //         || e.keyCode == 8)) {
+    //         return false;
+    //     }
+    // }
+
 }
 var position = 0;
 // Hàm xóa sản phẩm:
@@ -90,7 +101,7 @@ function btnEdit(pdtId) {
     <label for="">Nhập tên sản phẩm muốn sửa</label>
     <input type="text" id="editName" value="${pdt.name}"> 
     <label for="editPrice">Nhập giá sản phẩm muốn sửa</label>
-    <input type="number" id="editPrice" value="${pdt.price}">
+    <input type="number" id="editPrice" value="${pdt.price}" min=1>
     <label for="editImage">Nhập hình ảnh sản phẩm muốn sửa</label>
     <input type="url" id="editImage" value="${pdt.image}">
     <div>
@@ -100,6 +111,17 @@ function btnEdit(pdtId) {
 </div>
     `
     document.querySelector('.form-edit').innerHTML = str;
+    var number = document.getElementById('editPrice');
+
+    // Listen for input event on numInput.
+    number.onkeydown = function (e) {
+        if (!((e.keyCode > 95 && e.keyCode < 106)
+            || (e.keyCode > 47 && e.keyCode < 58)
+            || e.keyCode == 8)) {
+            return false;
+        }
+    }
+
 
 }
 // hàm đặt lại định dạng sau khi thêm sản phẩm
@@ -111,18 +133,33 @@ function clearFormEdit() {
     document.querySelector(".form-edit").classList.add("edit-none");
 }
 // hàm cập nhật sau khi thêm sản phẩm
-function btnUpdateAdd(pdtId) {
+function btnUpdateAdd() {
     let product = sortGetId() + 1;
     let addName = document.querySelector('#addName').value;
+    if (addName.trim() == "") {
+        alert("Hãy nhập tên!")
+        return;
+    } else {
+        products.name = addName;
+    }
     let addPrice = Number(document.querySelector('#addPrice').value);
+    if (addPrice == "") {
+        alert("Hãy nhập giá!")
+        return;
+    } else {
+        products.price = addPrice;
+    }
     let addImage = document.querySelector('#addImage').value;
-    products.name = addName;
-    products.price = addPrice;
-    products.image = addImage;
+    if (addImage.trim() == "") {
+        alert("Hãy thêm hình ảnh!")
+        return;
+    } else {
+        products.image = addImage;
+    }
     let pdt = new Product(product, addName, currencyFormat(addPrice), addImage);
     products.push(pdt);
     clearFormAdd();
-    alertProductName(addName);
+    // alertProductName(addName);
     setData(keyName, products);
     renderProducts(products);
     resetProducts();
@@ -133,6 +170,16 @@ function btnUpdateEdit(pdtId) {
     let editName = document.querySelector('#editName').value;
     let editPrice = document.querySelector('#editPrice').value;
     let editImage = document.querySelector('#editImage').value;
+
+    if (editPrice < 0) {
+        alert("gia khong hop le")
+        return;
+    }
+    // if (editPrice.equals("-")) {
+    //     alert("gia khong hop le")
+    //     return;
+    // }
+
     pdt.name = editName;
     pdt.price = Number(editPrice);
     pdt.image = editImage;
@@ -140,13 +187,15 @@ function btnUpdateEdit(pdtId) {
     setData(keyName, products);
     clearFormEdit();
     renderProducts(products);
+
+
 }
 // hàm báo tên sản phẩm
 function alertProductName() {
     let reset = document.querySelector('#addName').value;
-    if (reset.trim() == '') {
-        return alert('xin nhap ten')
-    }
+    // if (reset.trim() == '') {
+    //     return alert('xin nhap ten')
+    // }
 }
 // hàm cài lại sản phẩm
 function resetProducts() {
@@ -172,6 +221,7 @@ function sortGetId() {
     return getId;
 
 }
+
 // hàm định dạng tiền tệ 
 function currencyFormat(number) {
 
@@ -184,7 +234,7 @@ function currencyFormat(number) {
 
 }
 // hàm để tìm kiếm sản phẩm 
-function productSearch() {
+function search() {
     let keywork = document.querySelector('.search').value;
     let result = products.filter(function (product) {
         return product.name.toLowerCase().indexOf(keywork.toLowerCase()) != -1;
@@ -192,6 +242,47 @@ function productSearch() {
     renderProducts(result);
 }
 
+// // tim kiem 
+// function searchProduct() {
+//     let keysearch = document.querySelector('#searchProduct').value.toLowerCase();
+//     let arrKeySearch = keysearch.split('');
+//     console.log(arrKeySearch)
+//     let result = [];
+//     if (arrKeySearch.length == 1) {
+//         for (let i = 0; i < products.length; i++) {
+//             let sizeName = products[i].name.length;
+//             for (let j = 0; j < sizeName; j++) {
+//                 if (keysearch == products[i].name[0].toLowerCase()) {
+//                     result.push(products[i]);
+//                     break;
+//                 }
+//             }
+//         }
+//     } else {
+//         for (let i = 0; i < products.length; i++) {
+//             let sizeName = products[i].name.length;
+//             console.log(sizeName);
+//             console.log("arrKeySearch")
+//             console.log(arrKeySearch);
+//             for (let j = 0; j < sizeName; j++) {
+//                 if (arrKeySearch[0] == products[i].name[0].toLowerCase() && arrKeySearch[1] == products[i].name[j].toLowerCase()) {
+//                     result.push(products[i]);
+//                     break;
+//                 }
+//             }
+//         }
+//     }
+//     console.log(result);
+//     if (result.length == 0) {
+//         renderProducts(products);
+//     } else {
+//         renderProducts(result);
+//     }
+// }
+
+
+// document.querySelector("#editPrice").addEventListener("change", checkNumber);
 
 init()
 renderProducts(products);
+

@@ -147,6 +147,7 @@
 .edit-none {
     display: none;
 }
+
 button {
     border: none;
     outline: none;
@@ -158,46 +159,53 @@ button {
     border: 2px solid rgb(82, 151, 21);
     border-radius: 5px;
 }
+
 button:hover {
     background-color: rgb(129, 81, 241);
 }
+
 .form-add {
     background-color: rgb(219, 219, 219);
     box-shadow: 0 0 10px rgb(193, 193, 193);
 }
+
 .form-add>div>label {
     float: left;
     margin-right: 50px;
     margin-bottom: 12px;
 }
+
 .form-add>div>input {
     float: right;
     width: 900px;
     padding: 1px 0 1px 2px;
     margin-bottom: 10PX;
 }
+
 .form-add>div:last-child {
     width: 175px;
     margin: 0 auto;
     /* height: 30px; */
 }
+
 .form-add>div>button {
     text-align: center;
 }
+
 .search-bar {
 
     position: relative;
     right: -810px;
     top: -4px;
 
-    
+
 }
 
 .search-bar input {
     width: 200px;
     padding: 4px;
     outline: none;
-    
+
 }
 
 .search-bar i {
